@@ -37,22 +37,32 @@ console.log(food.meals[3]);
 const family = [
   {
     name: 'Elan',
-    jobTitle: 'Transcriptionist'
+    jobTitle: 'Transcriptionist',
+    boss: '1'
   },
   {
     name: 'Sinikka',
-    jobTitle: 'doctor'
+    jobTitle: 'doctor',
+    boss: '1'
   },
   {
     name: 'John',
-    jobTitle: 'doctor'
+    jobTitle: 'doctor',
   }
 ];
 
 for (let i = 0; i < family.length; i++) {
-  console.log(`${family[i].name}: ${family[i].jobTitle}`);
+  if (!family[i].boss){
+    console.log(`${family[i].jobTitle} ${family[i].name} doesn't report to anybody.`);
+  }else{
+    console.log(`${family[i].jobTitle} ${family[i].name} reports to ${family[i].boss}.`);
+  }
 }
 
 family.forEach(member => {
   console.log(`${member.name}: ${member.jobTitle}`);
 });
+
+
+// Drill 5
+
