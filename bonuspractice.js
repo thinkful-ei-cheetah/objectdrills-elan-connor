@@ -11,13 +11,8 @@ const HEROES = [
 ];
 
 function findOne(arr, query) {
-// first we need to loop through the array of objects so we can compare key/value pairs
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].id === query.id || arr[i].name === query.name || arr[i].squad === query.squad) {
-      return arr[i];
-    }
-  }
-  return null;
+  let keys = Object.keys(query);
+  return arr.find( hero => keys.every( key => query[key] === hero[key]));
 }
 
 console.log(findOne(HEROES, { id: 3 }));
@@ -35,3 +30,9 @@ const Database = {
     ]
   }
 };
+
+Database.findOne =  function findOne(query) {
+  let keys = Object.keys(query);
+  return this.store.heroes.find( hero => keys.every( key => query[key] === hero[key]));
+};
+console.log(Database.findOne2({squad: 'Avengers' }));
